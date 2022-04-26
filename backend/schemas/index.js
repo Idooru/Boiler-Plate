@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const connect = () => {
   if (process.env.NODE_ENV !== "production") {
@@ -6,7 +6,7 @@ const connect = () => {
   }
 
   mongoose.connect(
-    "mongodb://shere1765:shere12345!@localhost:27017/admin",
+    process.env.MONGODB_URI,
     {
       dbName: "Boiler-Plate",
     },
@@ -26,4 +26,4 @@ const connect = () => {
   });
 };
 
-module.exports = connect;
+export default connect;
