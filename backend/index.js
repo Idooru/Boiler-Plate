@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
@@ -13,12 +14,19 @@ const app = express();
 
 app.set("port", process.env.PORT || 5000);
 app.use(morgan("dev"));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("Hello!");
+});
+
+app.get("/api/hello", (req, res) => {
+  res.json({
+    message: "Hello",
+  });
 });
 
 app.post("/api/users/register", (req, res) => {
