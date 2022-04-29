@@ -26,4 +26,4 @@ const connect = () => {
   });
 };
 
-export default connect;
+export { connect };
